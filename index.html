@@ -1,0 +1,143 @@
+<form id="prayerForm" class="space-y-6">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <!-- Nombre -->
+    <div>
+      <label for="nombre" class="block text-sm font-medium text-gray-200 mb-2">
+        <i class="fa-solid fa-user text-gold-400 mr-1"></i> Nombre Completo *
+      </label>
+      <input 
+        type="text" 
+        id="nombre" 
+        name="nombre" 
+        required 
+        placeholder="Ej. María López"
+        class="w-full px-4 py-3 bg-night-900/80 border border-white/10 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500 transition-colors"
+      >
+    </div>
+
+    <!-- Teléfono -->
+    <div>
+      <label for="telefono" class="block text-sm font-medium text-gray-200 mb-2">
+        <i class="fa-solid fa-phone text-gold-400 mr-1"></i> Número de Teléfono *
+      </label>
+      <input 
+        type="tel" 
+        id="telefono" 
+        name="telefono" 
+        required 
+        placeholder="Ej. +57 300 123 4567"
+        class="w-full px-4 py-3 bg-night-900/80 border border-white/10 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500 transition-colors"
+      >
+    </div>
+  </div>
+
+  <!-- Correo Electrónico -->
+  <div>
+    <label for="email" class="block text-sm font-medium text-gray-200 mb-2">
+      <i class="fa-solid fa-envelope text-gold-400 mr-1"></i> Correo Electrónico *
+    </label>
+    <input 
+      type="email" 
+      id="email" 
+      name="email" 
+      required 
+      placeholder="ejemplo@correo.com"
+      class="w-full px-4 py-3 bg-night-900/80 border border-white/10 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500 transition-colors"
+    >
+  </div>
+
+  <!-- Pedido de Oración -->
+  <div>
+    <label for="peticion" class="block text-sm font-medium text-gray-200 mb-2">
+      <i class="fa-solid fa-comment-dots text-gold-400 mr-1"></i> Tu Motivo de Oración *
+    </label>
+    <textarea 
+      id="peticion" 
+      name="peticion" 
+      rows="4" 
+      required 
+      placeholder="Escribe aquí tu petición para que estemos orando por ti..."
+      class="w-full px-4 py-3 bg-night-900/80 border border-white/10 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500 transition-colors"
+    ></textarea>
+  </div>
+
+  <!-- Opción de Privacidad -->
+  <div class="space-y-2">
+    <label class="block text-sm font-medium text-gray-200">Privacidad de la petición:</label>
+    <div class="flex items-center space-x-6">
+      <label class="inline-flex items-center text-sm text-gray-300 cursor-pointer">
+        <input type="radio" name="privacidad" value="Público" checked class="text-gold-500 focus:ring-gold-400">
+        <span class="ml-2">Compartir con la comunidad</span>
+      </label>
+      <label class="inline-flex items-center text-sm text-gray-300 cursor-pointer">
+        <input type="radio" name="privacidad" value="Confidencial" class="text-gold-500 focus:ring-gold-400">
+        <span class="ml-2">Solo para el equipo pastoral (Confidencial)</span>
+      </label>
+    </div>
+  </div>
+
+  <!-- Botón de Envío -->
+  <button 
+    type="submit" 
+    id="submitBtn"
+    class="w-full bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-400 hover:to-gold-500 text-night-900 font-bold py-4 px-6 rounded-xl shadow-lg transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2"
+  >
+    <i class="fa-solid fa-paper-plane"></i>
+    <span id="btnText">Enviar Pedido de Oración</span>
+  </button>
+  
+  <p id="formStatus" class="text-center text-sm font-medium hidden"></p>
+</form>
+
+<script>
+  // REEMPLAZA ESTA URL CON LA URL QUE OBTUVISTE EN GOOGLE APPS SCRIPT
+  const SCRIPT_URL = 'TU_URL_DE_APPS_SCRIPT_AQUI';
+
+  document.getElementById('prayerForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const submitBtn = document.getElementById('submitBtn');
+    const btnText = document.getElementById('btnText');
+    const formStatus = document.getElementById('formStatus');
+
+    // Estado cargando
+    submitBtn.disabled = true;
+    btnText.textContent = 'Enviando...';
+    formStatus.classList.add('hidden');
+
+    const formData = {
+      nombre: document.getElementById('nombre').value,
+      telefono: document.getElementById('telefono').value,
+      email: document.getElementById('email').value,
+      peticion: document.getElementById('peticion').value,
+      privacidad: document.querySelector('input[name="privacidad"]:checked').value
+    };
+
+    fetch(SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors', // Evita bloqueos de CORS desde Google Apps Script
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    })
+    .then(() => {
+      // Éxito al enviar
+      formStatus.textContent = '¡Gracias! Tu petición de oración ha sido registrada correctamente.';
+      formStatus.className = 'text-center text-sm font-medium text-emerald-400 mt-3';
+      formStatus.classList.remove('hidden');
+      document.getElementById('prayerForm').reset();
+    })
+    .catch(error => {
+      // Manejo de error
+      console.error('Error:', error);
+      formStatus.textContent = 'Ocurrió un error al enviar tu petición. Por favor, intentalo de nuevo.';
+      formStatus.className = 'text-center text-sm font-medium text-rose-400 mt-3';
+      formStatus.classList.remove('hidden');
+    })
+    .finally(() => {
+      submitBtn.disabled = false;
+      btnText.textContent = 'Enviar Pedido de Oración';
+    });
+  });
+</script>
