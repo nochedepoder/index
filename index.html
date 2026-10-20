@@ -740,8 +740,9 @@
 
         prayerForm.addEventListener('submit', (e) => {
             e.preventDefault();
+            /**e.preventDefault();
 
-            const nombre = document.getElementById('nombre').value.trim();
+            //const nombre = document.getElementById('nombre').value.trim();
             const telefono = document.getElementById('telefono').value.trim();
             const email = document.getElementById('email').value.trim();
             const categoria = document.getElementById('categoria').value;
@@ -768,6 +769,17 @@
             setTimeout(() => {
                 formSuccessMessage.classList.add('hidden');
             }, 6000);
+            **/
+           const NUMERO = "573146488835"; // cambia por el número real
+
+           
+           const nombre = document.getElementById("nombre").value.trim(); 
+           const pedido = document.getElementById("pedido").value.trim();
+
+           let mensaje = "Tengo un pedido de oración";
+           if (nombre) mensaje += " (de " + nombre + ")";
+           mensaje += ": " + pedido;
+           window.open("https://wa.me/" + NUMERO + "?text=" + encodeURIComponent(mensaje), "_blank");
         });
 
         // Initialize Prayer Wall
