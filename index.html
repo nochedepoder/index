@@ -103,9 +103,9 @@
             <a href="#hero" class="mobile-link block py-2 text-base font-medium text-gray-200 hover:text-gold-400">Inicio</a>
             <a href="#quienes-somos" class="mobile-link block py-2 text-base font-medium text-gray-200 hover:text-gold-400">Quiénes Somos</a>
             <a href="#eventos" class="mobile-link block py-2 text-base font-medium text-gray-200 hover:text-gold-400">Próximo Evento</a>
-            <a href="#pedir-oracion-form" class="mobile-link block py-2 text-base font-medium text-gray-200 hover:text-gold-400">Pedidos de Oración</a>
-            <a href="#contacto" class="mobile-link block py-2 text-base font-medium text-gray-200 hover:text-gold-400">Contacto</a>
-            <a href="#pedir-oracion-form" class="mobile-link block w-full text-center bg-gold-500 text-night-900 font-semibold px-4 py-3 rounded-xl mt-4">
+            <!-- <a href="#pedir-oracion-form" class="mobile-link block py-2 text-base font-medium text-gray-200 hover:text-gold-400">Pedidos de Oración</a> -->
+            <!-- <a href="#contacto" class="mobile-link block py-2 text-base font-medium text-gray-200 hover:text-gold-400">Contacto</a> -->
+            <a href="https://wa.me/573146488835?text=Tengo%20un%20pedido..." target="_blank" class="mobile-link block w-full text-center bg-gold-500 text-night-900 font-semibold px-4 py-3 rounded-xl mt-4">
                 Enviar Pedido de Oración
             </a>
         </div>
@@ -131,7 +131,7 @@
             </p>
 
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
-                <a href="#pedir-oracion-form" class="w-full sm:w-auto bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-400 hover:to-gold-500 text-night-900 font-bold px-8 py-4 rounded-full text-base shadow-lg shadow-gold-500/20 hover:shadow-gold-500/40 transition-all transform hover:-translate-y-1 text-center">
+                <a href="https://wa.me/573146488835?text=Tengo%20un%20pedido..." target="_blank" class="w-full sm:w-auto bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-400 hover:to-gold-500 text-night-900 font-bold px-8 py-4 rounded-full text-base shadow-lg shadow-gold-500/20 hover:shadow-gold-500/40 transition-all transform hover:-translate-y-1 text-center">
                     <i class="fa-solid fa-heart mr-2"></i> Enviar Pedido de Oración
                 </a>
                 <a href="#eventos" class="w-full sm:w-auto bg-white/10 hover:bg-white/20 text-white font-medium px-8 py-4 rounded-full text-base backdrop-blur-md border border-white/20 transition-all text-center">
@@ -318,199 +318,7 @@
         </div>
     </section>
 
-    <!-- FORMULARIO DE PEDIDOS DE ORACIÓN -->
-    <section id="pedir-oracion-form" class="py-20 bg-night-900 relative">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-gold-500/10 text-gold-400 text-xs font-semibold uppercase tracking-wider mb-3">
-                    <i class="fa-solid fa-envelope-open-text"></i> Intercesión
-                </div>
-                <h2 class="font-carter text-3xl sm:text-5xl text-white mb-4">
-                    Envía tu Pedido de Oración
-                </h2>
-                <p class="text-gray-300 text-sm sm:text-base max-w-xl mx-auto">
-                    Completa el formulario para que el equipo de oración e intercesores de Noche de Poder presente tu motivo en nuestra próxima reunión.
-                </p>
-            </div>
-
-            <!-- Form Container -->
-            <div class="glass-card rounded-3xl p-6 sm:p-10 shadow-2xl">
-                <form id="prayerForm" class="space-y-6">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        <!-- Nombre Completo -->
-                        <div class="sm:col-span-2">
-                            <label for="nombre" class="block text-sm font-medium text-gray-200 mb-2">
-                                Nombre Completo <span class="text-gold-400">*</span>
-                            </label>
-                            <div class="relative">
-                                <span class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-gray-400">
-                                    <i class="fa-solid fa-user"></i>
-                                </span>
-                                <input type="text" id="nombre" required placeholder="Ej. María González" class="w-full bg-night-900/80 border border-white/10 rounded-xl pl-11 pr-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-gold-500 transition-colors">
-                            </div>
-                        </div>
-
-                        <!-- Teléfono / WhatsApp (NUEVO) -->
-                        <div>
-                            <label for="telefono" class="block text-sm font-medium text-gray-200 mb-2">
-                                Teléfono / WhatsApp <span class="text-gold-400">*</span>
-                            </label>
-                            <div class="relative">
-                                <span class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-gray-400">
-                                    <i class="fa-solid fa-phone"></i>
-                                </span>
-                                <input type="tel" id="telefono" required placeholder="Ej. +57 300 123 4567" class="w-full bg-night-900/80 border border-white/10 rounded-xl pl-11 pr-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-gold-500 transition-colors">
-                            </div>
-                        </div>
-
-                        <!-- Correo Electrónico (NUEVO) -->
-                        <div>
-                            <label for="email" class="block text-sm font-medium text-gray-200 mb-2">
-                                Correo Electrónico <span class="text-gold-400">*</span>
-                            </label>
-                            <div class="relative">
-                                <span class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-gray-400">
-                                    <i class="fa-solid fa-envelope"></i>
-                                </span>
-                                <input type="email" id="email" required placeholder="correo@ejemplo.com" class="w-full bg-night-900/80 border border-white/10 rounded-xl pl-11 pr-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-gold-500 transition-colors">
-                            </div>
-                        </div>
-
-                        <!-- Categoría de Oración -->
-                        <div class="sm:col-span-2">
-                            <label for="categoria" class="block text-sm font-medium text-gray-200 mb-2">
-                                Categoría de Oración <span class="text-gold-400">*</span>
-                            </label>
-                            <select id="categoria" required class="w-full bg-night-900/80 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-gold-500 transition-colors">
-                                <option value="Salud" class="bg-night-800">Salud & Restauración</option>
-                                <option value="Familia" class="bg-night-800">Familia & Relaciones</option>
-                                <option value="Finanzas" class="bg-night-800">Finanzas & Trabajo</option>
-                                <option value="Gratitud" class="bg-night-800">Gratitud & Testimonios</option>
-                                <option value="Fe" class="bg-night-800">Fe & Crecimiento Espiritual</option>
-                                <option value="Otro" class="bg-night-800">Otro motivo especial</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <!-- Motivo / Pedido de Oración -->
-                    <div>
-                        <label for="peticion" class="block text-sm font-medium text-gray-200 mb-2">
-                            Motivo / Pedido de Oración <span class="text-gold-400">*</span>
-                        </label>
-                        <textarea id="peticion" rows="4" required placeholder="Escribe aquí en detalle tu motivo o necesidad para que podamos interceder por ti..." class="w-full bg-night-900/80 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-gold-500 transition-colors resize-none"></textarea>
-                    </div>
-
-                    <!-- Checkboxes de Privacidad / Muro -->
-                    <div class="space-y-3 pt-2">
-                        <label class="flex items-start gap-3 cursor-pointer">
-                            <input type="checkbox" id="privado" class="mt-1 w-5 h-5 rounded border-gray-600 text-gold-500 focus:ring-gold-500 bg-night-900">
-                            <span class="text-sm text-gray-300">
-                                <i class="fa-solid fa-lock text-gold-400 mr-1"></i> <strong>Mantener en privado:</strong> Solo el equipo de oración leerá esta petición (no se publicará).
-                            </span>
-                        </label>
-
-                        <label class="flex items-start gap-3 cursor-pointer">
-                            <input type="checkbox" id="publicarMuro" checked class="mt-1 w-5 h-5 rounded border-gray-600 text-gold-500 focus:ring-gold-500 bg-night-900">
-                            <span class="text-sm text-gray-300">
-                                <strong>Compartir en el muro de oración:</strong> Permitir que los hermanos de la comunidad vean el motivo y se unan en oración.
-                            </span>
-                        </label>
-                    </div>
-
-                    <!-- Submit Button -->
-                    <button type="submit" class="w-full bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-400 hover:to-gold-500 text-night-900 font-bold py-4 rounded-xl text-base shadow-lg transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-paper-plane"></i> Enviar Pedido de Oración
-                    </button>
-                </form>
-
-                <!-- Feedback Toast / Alert Container -->
-                <div id="formSuccessMessage" class="hidden mt-6 p-4 rounded-xl bg-emerald-500/20 border border-emerald-500/50 text-emerald-300 text-center font-medium">
-                    <i class="fa-solid fa-circle-check text-xl mr-2"></i> ¡Gracias! Tu pedido de oración ha sido registrado. Estaremos orando por ti.
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- MURO INTERACTIVO DE PETICIONES -->
-    <section id="oracion" class="py-20 bg-night-800/30 relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-gold-500/10 text-gold-400 text-xs font-semibold uppercase tracking-wider mb-3">
-                    <i class="fa-solid fa-hands-holding"></i> Muro de Oración
-                </div>
-                <h2 class="font-carter text-3xl sm:text-5xl text-white mb-4">
-                    Comunidad en Oración
-                </h2>
-                <p class="text-gray-300">
-                    Haz clic en <span class="text-gold-400 font-semibold">"Me uno en oración"</span> para apoyar a nuestros hermanos en sus peticiones.
-                </p>
-            </div>
-
-            <!-- Community Prayers Grid -->
-            <div id="prayersGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Dynamically populated -->
-            </div>
-        </div>
-    </section>
-
-    <!-- SECCIÓN CONTACTO -->
-    <section id="contacto" class="py-20 bg-night-900 border-t border-white/5 relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
-                <!-- Info Card 1 -->
-                <div class="bg-night-800 rounded-2xl p-8 border border-white/10 flex flex-col justify-between">
-                    <div>
-                        <div class="w-12 h-12 bg-gold-500/10 text-gold-400 rounded-xl flex items-center justify-center text-xl mb-4">
-                            <i class="fa-solid fa-location-dot"></i>
-                        </div>
-                        <h3 class="font-carter text-xl text-white mb-2">Ubicación del Templo</h3>
-                        <p class="text-sm text-gray-300 leading-relaxed">
-                            Iglesia Adventista del Séptimo Día<br>
-                            Reunión presencial todos los Lunes 7:00 PM
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Info Card 2 -->
-                <div class="bg-night-800 rounded-2xl p-8 border border-white/10 flex flex-col justify-between">
-                    <div>
-                        <div class="w-12 h-12 bg-gold-500/10 text-gold-400 rounded-xl flex items-center justify-center text-xl mb-4">
-                            <i class="fa-solid fa-phone"></i>
-                        </div>
-                        <h3 class="font-carter text-xl text-white mb-2">Contacto Directo</h3>
-                        <p class="text-sm text-gray-300 leading-relaxed">
-                            Atención de Secretaría y Pastores<br>
-                            Lunes a Viernes de 8:00 AM - 5:00 PM
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Info Card 3 -->
-                <div class="bg-night-800 rounded-2xl p-8 border border-white/10 flex flex-col justify-between">
-                    <div>
-                        <div class="w-12 h-12 bg-gold-500/10 text-gold-400 rounded-xl flex items-center justify-center text-xl mb-4">
-                            <i class="fa-solid fa-share-nodes"></i>
-                        </div>
-                        <h3 class="font-carter text-xl text-white mb-2">Redes Sociales</h3>
-                        <p class="text-sm text-gray-300 leading-relaxed mb-4">
-                            Síguenos y participa en las transmisiones en vivo.
-                        </p>
-                        <div class="flex items-center gap-3">
-                            <a href="#" class="w-10 h-10 rounded-xl bg-night-900 border border-white/10 flex items-center justify-center text-gray-300 hover:text-gold-400 hover:border-gold-500 transition-colors">
-                                <i class="fa-brands fa-youtube text-lg"></i>
-                            </a>
-                            <a href="#" class="w-10 h-10 rounded-xl bg-night-900 border border-white/10 flex items-center justify-center text-gray-300 hover:text-gold-400 hover:border-gold-500 transition-colors">
-                                <i class="fa-brands fa-facebook-f text-lg"></i>
-                            </a>
-                            <a href="#" class="w-10 h-10 rounded-xl bg-night-900 border border-white/10 flex items-center justify-center text-gray-300 hover:text-gold-400 hover:border-gold-500 transition-colors">
-                                <i class="fa-brands fa-instagram text-lg"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    
 
     <!-- FOOTER -->
     <footer class="bg-night-900 border-t border-white/10 py-12 text-gray-400 text-sm">
