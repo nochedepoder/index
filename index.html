@@ -1,143 +1,777 @@
-<form id="prayerForm" class="space-y-6">
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-    <!-- Nombre -->
-    <div>
-      <label for="nombre" class="block text-sm font-medium text-gray-200 mb-2">
-        <i class="fa-solid fa-user text-gold-400 mr-1"></i> Nombre Completo *
-      </label>
-      <input 
-        type="text" 
-        id="nombre" 
-        name="nombre" 
-        required 
-        placeholder="Ej. María López"
-        class="w-full px-4 py-3 bg-night-900/80 border border-white/10 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500 transition-colors"
-      >
-    </div>
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noche de Poder - Espacio de Oración | Iglesia Adventista del Séptimo Día</title>
 
-    <!-- Teléfono -->
-    <div>
-      <label for="telefono" class="block text-sm font-medium text-gray-200 mb-2">
-        <i class="fa-solid fa-phone text-gold-400 mr-1"></i> Número de Teléfono *
-      </label>
-      <input 
-        type="tel" 
-        id="telefono" 
-        name="telefono" 
-        required 
-        placeholder="Ej. +57 300 123 4567"
-        class="w-full px-4 py-3 bg-night-900/80 border border-white/10 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500 transition-colors"
-      >
-    </div>
-  </div>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Carter One & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Carter+One&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Correo Electrónico -->
-  <div>
-    <label for="email" class="block text-sm font-medium text-gray-200 mb-2">
-      <i class="fa-solid fa-envelope text-gold-400 mr-1"></i> Correo Electrónico *
-    </label>
-    <input 
-      type="email" 
-      id="email" 
-      name="email" 
-      required 
-      placeholder="ejemplo@correo.com"
-      class="w-full px-4 py-3 bg-night-900/80 border border-white/10 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500 transition-colors"
-    >
-  </div>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <!-- Pedido de Oración -->
-  <div>
-    <label for="peticion" class="block text-sm font-medium text-gray-200 mb-2">
-      <i class="fa-solid fa-comment-dots text-gold-400 mr-1"></i> Tu Motivo de Oración *
-    </label>
-    <textarea 
-      id="peticion" 
-      name="peticion" 
-      rows="4" 
-      required 
-      placeholder="Escribe aquí tu petición para que estemos orando por ti..."
-      class="w-full px-4 py-3 bg-night-900/80 border border-white/10 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500 transition-colors"
-    ></textarea>
-  </div>
+    <!-- Tailwind Configuration for Custom Fonts & Colors -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        carter: ['"Carter One"', 'cursive', 'sans-serif'],
+                        sans: ['"Inter"', 'sans-serif'],
+                    },
+                    colors: {
+                        night: {
+                            900: '#0B132B',
+                            800: '#1C2541',
+                            700: '#3A506B',
+                        },
+                        gold: {
+                            400: '#F4D068',
+                            500: '#FFC857',
+                            600: '#E0A926',
+                        },
+                        spiritual: {
+                            purple: '#2A1B4E',
+                            light: '#F8F9FA'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
 
-  <!-- Opción de Privacidad -->
-  <div class="space-y-2">
-    <label class="block text-sm font-medium text-gray-200">Privacidad de la petición:</label>
-    <div class="flex items-center space-x-6">
-      <label class="inline-flex items-center text-sm text-gray-300 cursor-pointer">
-        <input type="radio" name="privacidad" value="Público" checked class="text-gold-500 focus:ring-gold-400">
-        <span class="ml-2">Compartir con la comunidad</span>
-      </label>
-      <label class="inline-flex items-center text-sm text-gray-300 cursor-pointer">
-        <input type="radio" name="privacidad" value="Confidencial" class="text-gold-500 focus:ring-gold-400">
-        <span class="ml-2">Solo para el equipo pastoral (Confidencial)</span>
-      </label>
-    </div>
-  </div>
+    <style>
+        .font-carter {
+            font-family: 'Carter One', cursive, sans-serif !important;
+        }
+        
+        .hero-glow {
+            background: radial-gradient(circle at center, rgba(255, 200, 87, 0.15) 0%, rgba(11, 19, 43, 0) 70%);
+        }
 
-  <!-- Botón de Envío -->
-  <button 
-    type="submit" 
-    id="submitBtn"
-    class="w-full bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-400 hover:to-gold-500 text-night-900 font-bold py-4 px-6 rounded-xl shadow-lg transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2"
-  >
-    <i class="fa-solid fa-paper-plane"></i>
-    <span id="btnText">Enviar Pedido de Oración</span>
-  </button>
-  
-  <p id="formStatus" class="text-center text-sm font-medium hidden"></p>
-</form>
+        .glass-card {
+            background: rgba(28, 37, 65, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 200, 87, 0.2);
+        }
+    </style>
+</head>
+<body class="font-sans bg-night-900 text-gray-100 antialiased selection:bg-gold-500 selection:text-night-900 flex flex-col min-h-screen">
 
-<script>
-  // REEMPLAZA ESTA URL CON LA URL QUE OBTUVISTE EN GOOGLE APPS SCRIPT
-  const SCRIPT_URL = 'TU_URL_DE_APPS_SCRIPT_AQUI';
+    <!-- NAVBAR -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-night-900/90 backdrop-blur-md border-b border-white/10 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="#hero" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-gold-500 to-amber-300 flex items-center justify-center text-night-900 shadow-lg shadow-gold-500/20 group-hover:scale-105 transition-transform">
+                        <i class="fa-solid fa-hands-praying text-xl"></i>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-carter text-2xl tracking-wide text-white group-hover:text-gold-400 transition-colors">Noche de Poder</span>
+                        <span class="text-[10px] text-gray-300 tracking-wider uppercase -mt-1 font-medium">Iglesia Adventista del Séptimo Día</span>
+                    </div>
+                </a>
 
-  document.getElementById('prayerForm').addEventListener('submit', function(e) {
-    e.preventDefault();
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#hero" class="text-sm font-medium text-gray-200 hover:text-gold-400 transition-colors">Inicio</a>
+                    <a href="#quienes-somos" class="text-sm font-medium text-gray-200 hover:text-gold-400 transition-colors">Quiénes Somos</a>
+                    <a href="#eventos" class="text-sm font-medium text-gray-200 hover:text-gold-400 transition-colors">Próximo Evento</a>
+                    <a href="#pedir-oracion-form" class="text-sm font-medium text-gray-200 hover:text-gold-400 transition-colors">Pedidos de Oración</a>
+                    <a href="#contacto" class="text-sm font-medium text-gray-200 hover:text-gold-400 transition-colors">Contacto</a>
+                    <a href="#pedir-oracion-form" class="bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-400 hover:to-gold-500 text-night-900 font-semibold px-5 py-2.5 rounded-full text-sm shadow-md hover:shadow-gold-500/20 transition-all transform hover:-translate-y-0.5">
+                        <i class="fa-solid fa-paper-plane mr-2"></i> Enviar Pedido
+                    </a>
+                </nav>
 
-    const submitBtn = document.getElementById('submitBtn');
-    const btnText = document.getElementById('btnText');
-    const formStatus = document.getElementById('formStatus');
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="md:hidden text-gray-300 hover:text-white focus:outline-none p-2" aria-label="Abrir Menú">
+                    <i class="fa-solid fa-bars text-2xl" id="menuIcon"></i>
+                </button>
+            </div>
+        </div>
 
-    // Estado cargando
-    submitBtn.disabled = true;
-    btnText.textContent = 'Enviando...';
-    formStatus.classList.add('hidden');
+        <!-- Mobile Navigation Drawer -->
+        <div id="mobileMenu" class="hidden md:hidden bg-night-800 border-b border-white/10 px-4 pt-2 pb-6 space-y-3">
+            <a href="#hero" class="mobile-link block py-2 text-base font-medium text-gray-200 hover:text-gold-400">Inicio</a>
+            <a href="#quienes-somos" class="mobile-link block py-2 text-base font-medium text-gray-200 hover:text-gold-400">Quiénes Somos</a>
+            <a href="#eventos" class="mobile-link block py-2 text-base font-medium text-gray-200 hover:text-gold-400">Próximo Evento</a>
+            <a href="#pedir-oracion-form" class="mobile-link block py-2 text-base font-medium text-gray-200 hover:text-gold-400">Pedidos de Oración</a>
+            <a href="#contacto" class="mobile-link block py-2 text-base font-medium text-gray-200 hover:text-gold-400">Contacto</a>
+            <a href="#pedir-oracion-form" class="mobile-link block w-full text-center bg-gold-500 text-night-900 font-semibold px-4 py-3 rounded-xl mt-4">
+                Enviar Pedido de Oración
+            </a>
+        </div>
+    </header>
 
-    const formData = {
-      nombre: document.getElementById('nombre').value,
-      telefono: document.getElementById('telefono').value,
-      email: document.getElementById('email').value,
-      peticion: document.getElementById('peticion').value,
-      privacidad: document.querySelector('input[name="privacidad"]:checked').value
-    };
+    <!-- HERO SECTION -->
+    <section id="hero" class="relative pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden bg-gradient-to-b from-night-900 via-spiritual-purple to-night-900">
+        <div class="absolute inset-0 hero-glow pointer-events-none"></div>
 
-    fetch(SCRIPT_URL, {
-      method: 'POST',
-      mode: 'no-cors', // Evita bloqueos de CORS desde Google Apps Script
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(formData)
-    })
-    .then(() => {
-      // Éxito al enviar
-      formStatus.textContent = '¡Gracias! Tu petición de oración ha sido registrada correctamente.';
-      formStatus.className = 'text-center text-sm font-medium text-emerald-400 mt-3';
-      formStatus.classList.remove('hidden');
-      document.getElementById('prayerForm').reset();
-    })
-    .catch(error => {
-      // Manejo de error
-      console.error('Error:', error);
-      formStatus.textContent = 'Ocurrió un error al enviar tu petición. Por favor, intentalo de nuevo.';
-      formStatus.className = 'text-center text-sm font-medium text-rose-400 mt-3';
-      formStatus.classList.remove('hidden');
-    })
-    .finally(() => {
-      submitBtn.disabled = false;
-      btnText.textContent = 'Enviar Pedido de Oración';
-    });
-  });
-</script>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-gold-500/30 text-gold-400 text-xs sm:text-sm font-medium mb-8">
+                <i class="fa-solid fa-cross text-gold-400"></i>
+                <span>Espacio Adventista de Intercesión y Fe</span>
+            </div>
+
+            <h1 class="font-carter text-4xl sm:text-6xl md:text-7xl font-normal tracking-wide text-white mb-6 leading-tight max-w-4xl mx-auto">
+                Un Espacio para Buscar a Dios en <span class="text-transparent bg-clip-text bg-gradient-to-r from-gold-400 via-amber-300 to-gold-500">Oración</span>
+            </h1>
+
+            <p class="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto mb-10 font-normal leading-relaxed">
+                "Clama a mí, y yo te responderé, y te enseñaré cosas grandes y ocultas que tú no conoces." <br>
+                <span class="text-gold-400 text-sm font-semibold">— Jeremías 33:3</span>
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
+                <a href="#pedir-oracion-form" class="w-full sm:w-auto bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-400 hover:to-gold-500 text-night-900 font-bold px-8 py-4 rounded-full text-base shadow-lg shadow-gold-500/20 hover:shadow-gold-500/40 transition-all transform hover:-translate-y-1 text-center">
+                    <i class="fa-solid fa-heart mr-2"></i> Enviar Pedido de Oración
+                </a>
+                <a href="#eventos" class="w-full sm:w-auto bg-white/10 hover:bg-white/20 text-white font-medium px-8 py-4 rounded-full text-base backdrop-blur-md border border-white/20 transition-all text-center">
+                    <i class="fa-solid fa-clock mr-2"></i> Ver Próximo Evento
+                </a>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-3xl mx-auto mt-16 pt-12 border-t border-white/10">
+                <div class="text-center">
+                    <p class="font-carter text-3xl sm:text-4xl text-gold-400 mb-1">Todos los Lunes</p>
+                    <p class="text-xs sm:text-sm text-gray-300 font-medium uppercase tracking-wider">7:00 PM (19:00 hrs)</p>
+                </div>
+                <div class="text-center">
+                    <p class="font-carter text-3xl sm:text-4xl text-gold-400 mb-1">1,240+</p>
+                    <p class="text-xs sm:text-sm text-gray-300 font-medium uppercase tracking-wider">Peticiones Intercedidas</p>
+                </div>
+                <div class="col-span-2 md:col-span-1 text-center">
+                    <p class="font-carter text-3xl sm:text-4xl text-gold-400 mb-1">100%</p>
+                    <p class="text-xs sm:text-sm text-gray-300 font-medium uppercase tracking-wider">Confidencialidad y Fe</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- QUIÉNES SOMOS SECTION -->
+    <section id="quienes-somos" class="py-20 bg-night-800/50 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-gold-500/10 text-gold-400 text-xs font-semibold uppercase tracking-wider">
+                        <i class="fa-solid fa-church"></i> Sobre Nosotros
+                    </div>
+                    <h2 class="font-carter text-3xl sm:text-4xl text-white">
+                        ¿Qué es Noche de Poder?
+                    </h2>
+                    <p class="text-gray-300 leading-relaxed">
+                        <strong class="text-white">Noche de Poder</strong> es un espacio de oración e intercesión impulsado por la <span class="text-gold-400 font-medium">Iglesia Adventista del Séptimo Día</span>. Creemos en el poder vivo y renovador de la oración ferviente y en las promesas de las Sagradas Escrituras.
+                    </p>
+                    <p class="text-gray-300 leading-relaxed">
+                        Cada semana creamos un refugio espiritual para clamar por salud, restauración familiar, paz interior, provisión financiera y crecimiento en la fe, fortaleciendo nuestros lazos comunitarios en el amor de Dios.
+                    </p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+                        <div class="p-4 rounded-xl bg-night-900/80 border border-white/5 flex items-start gap-3">
+                            <div class="p-2 bg-gold-500/20 text-gold-400 rounded-lg">
+                                <i class="fa-solid fa-hands-holding-child text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-carter text-white text-lg">Intercesión</h3>
+                                <p class="text-xs text-gray-400">Oramos con amor y empatía por tus cargas.</p>
+                            </div>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-night-900/80 border border-white/5 flex items-start gap-3">
+                            <div class="p-2 bg-gold-500/20 text-gold-400 rounded-lg">
+                                <i class="fa-solid fa-book-bible text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-carter text-white text-lg">Palabra Viva</h3>
+                                <p class="text-xs text-gray-400">Mensajes y promesas para fortalecer tu fe.</p>
+                            </div>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-night-900/80 border border-white/5 flex items-start gap-3">
+                            <div class="p-2 bg-gold-500/20 text-gold-400 rounded-lg">
+                                <i class="fa-solid fa-shield-halved text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-carter text-white text-lg">Privacidad</h3>
+                                <p class="text-xs text-gray-400">Opción de peticiones 100% confidenciales.</p>
+                            </div>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-night-900/80 border border-white/5 flex items-start gap-3">
+                            <div class="p-2 bg-gold-500/20 text-gold-400 rounded-lg">
+                                <i class="fa-solid fa-users text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-carter text-white text-lg">Comunidad</h3>
+                                <p class="text-xs text-gray-400">Unidos en fe tanto presencial como online.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-gold-500 to-spiritual-purple rounded-3xl blur opacity-30"></div>
+                    <div class="relative rounded-2xl glass-card p-8 sm:p-10 text-center space-y-6">
+                        <div class="w-20 h-20 mx-auto bg-gold-500/20 rounded-full flex items-center justify-center text-gold-400 text-3xl">
+                            <i class="fa-solid fa-quote-left"></i>
+                        </div>
+                        <p class="font-carter text-xl text-white italic leading-snug">
+                            "La oración es el acto de abrir el corazón a Dios como a un amigo. No es que se necesite para dar a conocer a Dios lo que somos, sino a fin de capacitarnos para recibirle."
+                        </p>
+                        <div class="text-sm text-gold-400 font-semibold uppercase tracking-wider">
+                            — Elena G. de White (El Camino a Cristo)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EVENTOS Y CUENTA REGRESIVA -->
+    <section id="eventos" class="py-20 relative bg-gradient-to-b from-night-900 via-night-800 to-night-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-gold-500/10 text-gold-400 text-xs font-semibold uppercase tracking-wider mb-3">
+                    <i class="fa-solid fa-calendar-days"></i> Próxima Cita
+                </div>
+                <h2 class="font-carter text-3xl sm:text-5xl text-white mb-4">
+                    Próximo Encuentro de Oración
+                </h2>
+                <p class="text-gray-300">
+                    Nos reunimos todos los <strong class="text-gold-400">Lunes a las 7:00 PM (19:00 hrs)</strong>. Nuestro contador calcula automáticamente el siguiente evento.
+                </p>
+            </div>
+
+            <!-- Countdown Box -->
+            <div class="max-w-4xl mx-auto glass-card rounded-3xl p-6 sm:p-10 shadow-2xl border border-gold-500/20 mb-12">
+                <div class="text-center mb-6">
+                    <span class="text-xs uppercase tracking-widest text-gold-400 font-semibold">Tiempo restante para el inicio:</span>
+                </div>
+                
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
+                    <div class="bg-night-900/90 rounded-2xl p-4 sm:p-6 border border-white/10">
+                        <span id="days" class="font-carter text-4xl sm:text-6xl text-gold-400 block">00</span>
+                        <span class="text-xs text-gray-400 uppercase font-semibold mt-1 block">Días</span>
+                    </div>
+                    <div class="bg-night-900/90 rounded-2xl p-4 sm:p-6 border border-white/10">
+                        <span id="hours" class="font-carter text-4xl sm:text-6xl text-gold-400 block">00</span>
+                        <span class="text-xs text-gray-400 uppercase font-semibold mt-1 block">Horas</span>
+                    </div>
+                    <div class="bg-night-900/90 rounded-2xl p-4 sm:p-6 border border-white/10">
+                        <span id="minutes" class="font-carter text-4xl sm:text-6xl text-gold-400 block">00</span>
+                        <span class="text-xs text-gray-400 uppercase font-semibold mt-1 block">Minutos</span>
+                    </div>
+                    <div class="bg-night-900/90 rounded-2xl p-4 sm:p-6 border border-white/10">
+                        <span id="seconds" class="font-carter text-4xl sm:text-6xl text-gold-400 block">00</span>
+                        <span class="text-xs text-gray-400 uppercase font-semibold mt-1 block">Segundos</span>
+                    </div>
+                </div>
+
+                <div class="mt-8 text-center text-sm text-gray-300 flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-circle text-emerald-500 text-[10px] animate-pulse"></i>
+                    <span>Próxima fecha programada: <strong class="text-white" id="nextDateText">Cargando fecha...</strong></span>
+                </div>
+            </div>
+
+            <!-- Event Information Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <div class="bg-night-800 rounded-2xl p-6 sm:p-8 border border-white/10 hover:border-gold-500/40 transition-all flex items-start gap-5">
+                    <div class="w-14 h-14 rounded-2xl bg-gold-500/10 text-gold-400 flex items-center justify-center text-2xl flex-shrink-0">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-carter text-xl text-white mb-2">Modalidad Presencial</h3>
+                        <p class="text-sm text-gray-300 mb-3">Templo Central de la Iglesia Adventista del Séptimo Día.</p>
+                        <p class="text-xs text-gray-400 flex items-center gap-2 mb-4">
+                            <i class="fa-regular fa-clock text-gold-400"></i> Lunes - 7:00 PM (19:00 hrs)
+                        </p>
+                        <a href="#contacto" class="text-xs font-semibold text-gold-400 hover:text-white transition-colors inline-flex items-center gap-1">
+                            Ver Ubicación <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-night-800 rounded-2xl p-6 sm:p-8 border border-white/10 hover:border-gold-500/40 transition-all flex items-start gap-5">
+                    <div class="w-14 h-14 rounded-2xl bg-gold-500/10 text-gold-400 flex items-center justify-center text-2xl flex-shrink-0">
+                        <i class="fa-solid fa-video"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-carter text-xl text-white mb-2">Transmisión Virtual</h3>
+                        <p class="text-sm text-gray-300 mb-3">Conéctate desde cualquier lugar mediante YouTube Live o Zoom.</p>
+                        <p class="text-xs text-gray-400 flex items-center gap-2 mb-4">
+                            <i class="fa-regular fa-clock text-gold-400"></i> Lunes - 7:00 PM (19:00 hrs)
+                        </p>
+                        <a href="#pedir-oracion-form" class="text-xs font-semibold text-gold-400 hover:text-white transition-colors inline-flex items-center gap-1">
+                            Agendar Recordatorio <i class="fa-solid fa-bell"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FORMULARIO DE PEDIDOS DE ORACIÓN -->
+    <section id="pedir-oracion-form" class="py-20 bg-night-900 relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-gold-500/10 text-gold-400 text-xs font-semibold uppercase tracking-wider mb-3">
+                    <i class="fa-solid fa-envelope-open-text"></i> Intercesión
+                </div>
+                <h2 class="font-carter text-3xl sm:text-5xl text-white mb-4">
+                    Envía tu Pedido de Oración
+                </h2>
+                <p class="text-gray-300 text-sm sm:text-base max-w-xl mx-auto">
+                    Completa el formulario para que el equipo de oración e intercesores de Noche de Poder presente tu motivo en nuestra próxima reunión.
+                </p>
+            </div>
+
+            <!-- Form Container -->
+            <div class="glass-card rounded-3xl p-6 sm:p-10 shadow-2xl">
+                <form id="prayerForm" class="space-y-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <!-- Nombre Completo -->
+                        <div class="sm:col-span-2">
+                            <label for="nombre" class="block text-sm font-medium text-gray-200 mb-2">
+                                Nombre Completo <span class="text-gold-400">*</span>
+                            </label>
+                            <div class="relative">
+                                <span class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-gray-400">
+                                    <i class="fa-solid fa-user"></i>
+                                </span>
+                                <input type="text" id="nombre" required placeholder="Ej. María González" class="w-full bg-night-900/80 border border-white/10 rounded-xl pl-11 pr-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-gold-500 transition-colors">
+                            </div>
+                        </div>
+
+                        <!-- Teléfono / WhatsApp (NUEVO) -->
+                        <div>
+                            <label for="telefono" class="block text-sm font-medium text-gray-200 mb-2">
+                                Teléfono / WhatsApp <span class="text-gold-400">*</span>
+                            </label>
+                            <div class="relative">
+                                <span class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-gray-400">
+                                    <i class="fa-solid fa-phone"></i>
+                                </span>
+                                <input type="tel" id="telefono" required placeholder="Ej. +57 300 123 4567" class="w-full bg-night-900/80 border border-white/10 rounded-xl pl-11 pr-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-gold-500 transition-colors">
+                            </div>
+                        </div>
+
+                        <!-- Correo Electrónico (NUEVO) -->
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-200 mb-2">
+                                Correo Electrónico <span class="text-gold-400">*</span>
+                            </label>
+                            <div class="relative">
+                                <span class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-gray-400">
+                                    <i class="fa-solid fa-envelope"></i>
+                                </span>
+                                <input type="email" id="email" required placeholder="correo@ejemplo.com" class="w-full bg-night-900/80 border border-white/10 rounded-xl pl-11 pr-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-gold-500 transition-colors">
+                            </div>
+                        </div>
+
+                        <!-- Categoría de Oración -->
+                        <div class="sm:col-span-2">
+                            <label for="categoria" class="block text-sm font-medium text-gray-200 mb-2">
+                                Categoría de Oración <span class="text-gold-400">*</span>
+                            </label>
+                            <select id="categoria" required class="w-full bg-night-900/80 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-gold-500 transition-colors">
+                                <option value="Salud" class="bg-night-800">Salud & Restauración</option>
+                                <option value="Familia" class="bg-night-800">Familia & Relaciones</option>
+                                <option value="Finanzas" class="bg-night-800">Finanzas & Trabajo</option>
+                                <option value="Gratitud" class="bg-night-800">Gratitud & Testimonios</option>
+                                <option value="Fe" class="bg-night-800">Fe & Crecimiento Espiritual</option>
+                                <option value="Otro" class="bg-night-800">Otro motivo especial</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Motivo / Pedido de Oración -->
+                    <div>
+                        <label for="peticion" class="block text-sm font-medium text-gray-200 mb-2">
+                            Motivo / Pedido de Oración <span class="text-gold-400">*</span>
+                        </label>
+                        <textarea id="peticion" rows="4" required placeholder="Escribe aquí en detalle tu motivo o necesidad para que podamos interceder por ti..." class="w-full bg-night-900/80 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-gold-500 transition-colors resize-none"></textarea>
+                    </div>
+
+                    <!-- Checkboxes de Privacidad / Muro -->
+                    <div class="space-y-3 pt-2">
+                        <label class="flex items-start gap-3 cursor-pointer">
+                            <input type="checkbox" id="privado" class="mt-1 w-5 h-5 rounded border-gray-600 text-gold-500 focus:ring-gold-500 bg-night-900">
+                            <span class="text-sm text-gray-300">
+                                <i class="fa-solid fa-lock text-gold-400 mr-1"></i> <strong>Mantener en privado:</strong> Solo el equipo de oración leerá esta petición (no se publicará).
+                            </span>
+                        </label>
+
+                        <label class="flex items-start gap-3 cursor-pointer">
+                            <input type="checkbox" id="publicarMuro" checked class="mt-1 w-5 h-5 rounded border-gray-600 text-gold-500 focus:ring-gold-500 bg-night-900">
+                            <span class="text-sm text-gray-300">
+                                <strong>Compartir en el muro de oración:</strong> Permitir que los hermanos de la comunidad vean el motivo y se unan en oración.
+                            </span>
+                        </label>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="w-full bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-400 hover:to-gold-500 text-night-900 font-bold py-4 rounded-xl text-base shadow-lg transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-paper-plane"></i> Enviar Pedido de Oración
+                    </button>
+                </form>
+
+                <!-- Feedback Toast / Alert Container -->
+                <div id="formSuccessMessage" class="hidden mt-6 p-4 rounded-xl bg-emerald-500/20 border border-emerald-500/50 text-emerald-300 text-center font-medium">
+                    <i class="fa-solid fa-circle-check text-xl mr-2"></i> ¡Gracias! Tu pedido de oración ha sido registrado. Estaremos orando por ti.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MURO INTERACTIVO DE PETICIONES -->
+    <section id="oracion" class="py-20 bg-night-800/30 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-gold-500/10 text-gold-400 text-xs font-semibold uppercase tracking-wider mb-3">
+                    <i class="fa-solid fa-hands-holding"></i> Muro de Oración
+                </div>
+                <h2 class="font-carter text-3xl sm:text-5xl text-white mb-4">
+                    Comunidad en Oración
+                </h2>
+                <p class="text-gray-300">
+                    Haz clic en <span class="text-gold-400 font-semibold">"Me uno en oración"</span> para apoyar a nuestros hermanos en sus peticiones.
+                </p>
+            </div>
+
+            <!-- Community Prayers Grid -->
+            <div id="prayersGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Dynamically populated -->
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN CONTACTO -->
+    <section id="contacto" class="py-20 bg-night-900 border-t border-white/5 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+                <!-- Info Card 1 -->
+                <div class="bg-night-800 rounded-2xl p-8 border border-white/10 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-gold-500/10 text-gold-400 rounded-xl flex items-center justify-center text-xl mb-4">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <h3 class="font-carter text-xl text-white mb-2">Ubicación del Templo</h3>
+                        <p class="text-sm text-gray-300 leading-relaxed">
+                            Iglesia Adventista del Séptimo Día<br>
+                            Reunión presencial todos los Lunes 7:00 PM
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Info Card 2 -->
+                <div class="bg-night-800 rounded-2xl p-8 border border-white/10 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-gold-500/10 text-gold-400 rounded-xl flex items-center justify-center text-xl mb-4">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+                        <h3 class="font-carter text-xl text-white mb-2">Contacto Directo</h3>
+                        <p class="text-sm text-gray-300 leading-relaxed">
+                            Atención de Secretaría y Pastores<br>
+                            Lunes a Viernes de 8:00 AM - 5:00 PM
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Info Card 3 -->
+                <div class="bg-night-800 rounded-2xl p-8 border border-white/10 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-gold-500/10 text-gold-400 rounded-xl flex items-center justify-center text-xl mb-4">
+                            <i class="fa-solid fa-share-nodes"></i>
+                        </div>
+                        <h3 class="font-carter text-xl text-white mb-2">Redes Sociales</h3>
+                        <p class="text-sm text-gray-300 leading-relaxed mb-4">
+                            Síguenos y participa en las transmisiones en vivo.
+                        </p>
+                        <div class="flex items-center gap-3">
+                            <a href="#" class="w-10 h-10 rounded-xl bg-night-900 border border-white/10 flex items-center justify-center text-gray-300 hover:text-gold-400 hover:border-gold-500 transition-colors">
+                                <i class="fa-brands fa-youtube text-lg"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-xl bg-night-900 border border-white/10 flex items-center justify-center text-gray-300 hover:text-gold-400 hover:border-gold-500 transition-colors">
+                                <i class="fa-brands fa-facebook-f text-lg"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-xl bg-night-900 border border-white/10 flex items-center justify-center text-gray-300 hover:text-gold-400 hover:border-gold-500 transition-colors">
+                                <i class="fa-brands fa-instagram text-lg"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-night-900 border-t border-white/10 py-12 text-gray-400 text-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8 items-center text-center md:text-left">
+                <div class="space-y-3">
+                    <div class="flex items-center justify-center md:justify-start gap-3">
+                        <div class="w-8 h-8 rounded-full bg-gold-500 flex items-center justify-center text-night-900">
+                            <i class="fa-solid fa-hands-praying"></i>
+                        </div>
+                        <span class="font-carter text-2xl text-white">Noche de Poder</span>
+                    </div>
+                    <p class="text-xs text-gray-400 max-w-sm">
+                        Espacio de oración e intercesión de la Iglesia Adventista del Séptimo Día. Uniendo vidas a través de la oración.
+                    </p>
+                </div>
+
+                <div class="text-center">
+                    <h4 class="font-carter text-white text-base mb-2">Horario Regular</h4>
+                    <p class="text-xs text-gold-400 font-semibold">Todos los Lunes a las 7:00 PM (19:00 hrs)</p>
+                    <p class="text-xs text-gray-400 mt-1">Presencial y Transmisión Digital</p>
+                </div>
+
+                <div class="text-center md:text-right">
+                    <p class="text-xs italic text-gray-300 mb-1">"Perseverad en la oración, velando en ella con acción de gracias."</p>
+                    <span class="text-[11px] text-gold-400 font-semibold">— Colosenses 4:2</span>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-300 gap-4">
+                <p>&copy; <span id="year"></span> Noche de Poder - Iglesia Adventista del Séptimo Día. Todos los derechos reservados.</p>
+                <div class="flex items-center space-x-4">
+                    <a href="#hero" class="hover:text-gold-400 transition-colors">Inicio</a>
+                    <span>•</span>
+                    <a href="#quienes-somos" class="hover:text-gold-400 transition-colors">Quiénes Somos</a>
+                    <span>•</span>
+                    <a href="#pedir-oracion-form" class="hover:text-gold-400 transition-colors">Pedidos de Oración</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Set dynamic copyright year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Mobile Menu Toggle logic
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuIcon = document.getElementById('menuIcon');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.className = 'fa-solid fa-bars text-2xl';
+            } else {
+                menuIcon.className = 'fa-solid fa-xmark text-2xl';
+            }
+        });
+
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.className = 'fa-solid fa-bars text-2xl';
+            });
+        });
+
+        /* ===================================================
+           COUNTDOWN TIMER LOGIC (Every Monday at 7:00 PM / 19:00)
+        =================================================== */
+        function getNextMonday7PM() {
+            const now = new Date();
+            const result = new Date();
+            
+            // Set time to 19:00:00.000
+            result.setHours(19, 0, 0, 0);
+
+            const currentDay = now.getDay(); // 0 = Sunday, 1 = Monday...
+            let daysUntilMonday = (1 + 7 - currentDay) % 7;
+
+            if (currentDay === 1) {
+                if (now.getTime() >= result.getTime()) {
+                    daysUntilMonday = 7;
+                }
+            } else if (daysUntilMonday === 0) {
+                daysUntilMonday = 7;
+            }
+
+            result.setDate(now.getDate() + daysUntilMonday);
+            return result;
+        }
+
+        let targetDate = getNextMonday7PM();
+
+        function updateNextDateDisplay() {
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+            const formattedDate = targetDate.toLocaleDateString('es-ES', options);
+            document.getElementById('nextDateText').textContent = formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);
+        }
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = targetDate.getTime() - now;
+
+            if (distance < 0) {
+                targetDate = getNextMonday7PM();
+                updateNextDateDisplay();
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = String(days).padStart(2, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+        }
+
+        updateNextDateDisplay();
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        /* ===================================================
+           COMMUNITY PRAYER WALL & INTERACTION
+        =================================================== */
+        const initialPrayers = [
+            {
+                id: 1,
+                nombre: "Familia Ramírez",
+                categoria: "Salud",
+                peticion: "Pedimos oración por la pronta recuperación de nuestro abuelo Antonio tras su intervención médica.",
+                oracionesCount: 34,
+                fecha: "Hace 2 horas"
+            },
+            {
+                id: 2,
+                nombre: "Carlos M.",
+                categoria: "Fe",
+                peticion: "Solicito oración por fortaleza espiritual en mi trabajo y para ser un testimonio vivo de fe para mis compañeros.",
+                oracionesCount: 45,
+                fecha: "Hace 5 horas"
+            },
+            {
+                id: 3,
+                nombre: "Elena & David",
+                categoria: "Familia",
+                peticion: "Oración por la paz en nuestro hogar y la orientación de nuestros hijos en sus estudios universitarios.",
+                oracionesCount: 38,
+                fecha: "Ayer"
+            },
+            {
+                id: 4,
+                nombre: "Hna. Lucía B.",
+                categoria: "Gratitud",
+                peticion: "¡Doy gracias a Dios porque abrió las puertas de un nuevo empleo en el momento que más lo necesitábamos!",
+                oracionesCount: 56,
+                fecha: "Hace 2 días"
+            }
+        ];
+
+        function renderPrayers() {
+            const grid = document.getElementById('prayersGrid');
+            grid.innerHTML = '';
+
+            initialPrayers.forEach(item => {
+                const badgeColor = item.categoria === 'Salud' ? 'bg-rose-500/10 text-rose-400 border-rose-500/20' :
+                                 item.categoria === 'Familia' ? 'bg-amber-500/10 text-amber-400 border-amber-500/20' :
+                                 item.categoria === 'Finanzas' ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20' :
+                                 item.categoria === 'Gratitud' ? 'bg-teal-500/10 text-teal-400 border-teal-500/20' :
+                                 'bg-gold-500/10 text-gold-400 border-gold-500/20';
+
+                const cardHtml = `
+                    <div class="bg-night-900 rounded-2xl p-6 border border-white/10 hover:border-gold-500/30 transition-all flex flex-col justify-between space-y-4 shadow-lg">
+                        <div>
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="text-xs font-semibold px-3 py-1 rounded-full border ${badgeColor}">
+                                    ${item.categoria}
+                                </span>
+                                <span class="text-xs text-gray-500">${item.fecha}</span>
+                            </div>
+                            <h3 class="font-carter text-lg text-white mb-2">${escapeHtml(item.nombre)}</h3>
+                            <p class="text-sm text-gray-300 leading-relaxed font-normal">
+                                "${escapeHtml(item.peticion)}"
+                            </p>
+                        </div>
+
+                        <div class="pt-4 border-t border-white/5 flex items-center justify-between">
+                            <span class="text-xs text-gray-400 flex items-center gap-1.5">
+                                <i class="fa-solid fa-hands-praying text-gold-400"></i>
+                                <strong class="text-white" id="count-${item.id}">${item.oracionesCount}</strong> unidos
+                            </span>
+                            <button onclick="joinPrayer(${item.id}, this)" class="bg-gold-500/10 hover:bg-gold-500 hover:text-night-900 text-gold-400 text-xs font-semibold px-3 py-2 rounded-xl border border-gold-500/20 transition-all flex items-center gap-1.5">
+                                <i class="fa-regular fa-heart"></i>
+                                <span>Me uno en oración</span>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                grid.insertAdjacentHTML('beforeend', cardHtml);
+            });
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function joinPrayer(id, btnElement) {
+            const countElem = document.getElementById(`count-${id}`);
+            if (!btnElement.classList.contains('joined')) {
+                let current = parseInt(countElem.textContent);
+                countElem.textContent = current + 1;
+                btnElement.classList.add('joined', 'bg-gold-500', 'text-night-900');
+                btnElement.classList.remove('bg-gold-500/10', 'text-gold-400');
+                btnElement.innerHTML = `<i class="fa-solid fa-heart text-rose-600"></i> <span>Unido en oración</span>`;
+            }
+        }
+
+        // Handle Form Submission
+        const prayerForm = document.getElementById('prayerForm');
+        const formSuccessMessage = document.getElementById('formSuccessMessage');
+
+        prayerForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const nombre = document.getElementById('nombre').value.trim();
+            const telefono = document.getElementById('telefono').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const categoria = document.getElementById('categoria').value;
+            const peticion = document.getElementById('peticion').value.trim();
+            const privado = document.getElementById('privado').checked;
+            const publicarMuro = document.getElementById('publicarMuro').checked;
+
+            if (publicarMuro && !privado) {
+                const newPrayer = {
+                    id: Date.now(),
+                    nombre: nombre || 'Anónimo',
+                    categoria: categoria,
+                    peticion: peticion,
+                    oracionesCount: 1,
+                    fecha: "Justo ahora"
+                };
+                initialPrayers.unshift(newPrayer);
+                renderPrayers();
+            }
+
+            formSuccessMessage.classList.remove('hidden');
+            prayerForm.reset();
+
+            setTimeout(() => {
+                formSuccessMessage.classList.add('hidden');
+            }, 6000);
+        });
+
+        // Initialize Prayer Wall
+        renderPrayers();
+    </script>
+</body>
+</html>
